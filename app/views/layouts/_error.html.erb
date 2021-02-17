@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+    <div id="error_explanation" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h2><%= pluralize(@object.errors.count, "error") %> prohibited this from being saved:</h2>
+
+    <ul>
+        <% object.errors.full_messages.each do |error| %>
+        <li><small style="color: red;"></small><%= error %></li><small>
+        <% end %>
+    </ul>
+    </div>
+<% end %> 
