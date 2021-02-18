@@ -1,2 +1,33 @@
-<h1><%=@user.username%>'s Melody - An Enrollment App </h1>
-<h2> Describe the App </h2>
+<div class="container">
+  <div class="jumbotron">
+  <p> Welcome to Melody !! This is a database to assign music instrument and track enrollments with Create, Read, Update and Delete capability.</p>
+  <h5> Follow the below guidance to assign the instrument correctly<h4>
+  <h6>:: :: As a user you can choose three Levels - Beginner, Intermediate and Experienced</h6>
+  <h6>:: :: Ensure to choose the Price and Minimum duration based on the Levels</h6>
+  <li>Beginner -> $39 per session -> 16 weeks</li>
+  <li>Intermediate -> $49 per session -> 8 weeks</li>
+  <li>Experienced -> $79 per session -> 4 weeks</li>
+  </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th>Instrument</th>
+        <th>Enrolled Student</th>
+        <th>Billing Start Date</th>
+    
+      </tr>
+    </thead>
+
+    <tbody>
+        <% @user.enrollments.each do |enrollment| %>
+         <tr>
+            <td><%= enrollment.instrument.name %></td>
+            <td><%= enrollment.student %></td>
+            <td><%= enrollment.price %></td>
+          <% if enrollment.user.id == current_user.id %>
+          <td><%= link_to "Edit Enrollment", edit_enrollment_path(enrollment.id), method: :edit %>
+          <td><%= button_to "Delete Enrollment", enrollment_path(enrollment.id), method: :delete, data: { confirm: "Are you sure you want to delete the record?"}, class: "btn btn-xs btn-danger" %>
+      <% end %>
+          </tr>
+  <% end %>  
+</div>

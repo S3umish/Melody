@@ -23,10 +23,11 @@
         <%= render 'layouts/nav' %>
         <div class="custom_errors"><%= flash[:message] %></div>
     <div>
-      <%= link_to "Create New Enrollment", new_enrollment_path %>  |
-      <%= link_to "All Enrollments", enrollments_path %> |
-      <%= link_to "Add New Instrument", instruments_path %> |
-      <%= link_to "Logout", logout_path, method: 'delete' %>
+      <%#= link_to "Create New Enrollment", new_enrollment_path %>  |
+      <%#= link_to "All Enrollments", enrollments_path %> 
+      <%= link_to "Add New Instrument", instruments_path ,class: "btn btn- btn-warning text-white"%> |
+      <%#= link_to "Logout", logout_path, method: 'delete' %>
+      <%= link_to 'Home', user_path(@current_user), class: "btn btn-primary text-white" %>
     </div>
  
     <%= yield %>

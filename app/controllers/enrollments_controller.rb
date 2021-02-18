@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
-    before_action :set_enrollment
+    before_action :set_enrollment, :redirect_if_not_owner, only: [:show, :edit, :update, :destroy]
+    layout "enrollment"
     def index
         # binding.pry
         if params[:instrument_id]
@@ -12,7 +13,7 @@ class EnrollmentsController < ApplicationController
     end
 
     def show
-        @enrollment = current_user.enrollments.find_by(id: params[:id])
+      @enrollment = current_user.enrollments.find_by(id: params[:id])
     end
 
     def new
@@ -38,23 +39,23 @@ class EnrollmentsController < ApplicationController
     end
 
     def edit
-        if current_user != @lesson.user
-          redirect_to user_path(current_user)
-          flash[:error]= "Not your Enrollment" 
-        end
-         @enrollment = current_user.enrollments.find_by(id: params[:id])
+      if current_user != @enrollment.user
+        redirect_to user_path(current_user)
+        flash[:error]= "Not your Enrollment" 
+      end
+        @enrollment = current_user.enrollments.find_by(id: params[:id])
       end
     end
 
     def update
-        @enrollment = current_user.enrollments.find_by(id: params[:id])
-        @enrollment.update(enrollment_params)
-        if @enrollment.valid?
-          redirect_to enrollment_path
-          flash[:message]= "Enrollment Updated!"
-        else
-          render :edit
-        end
+      @enrollment = current_user.enrollments.find_by(id: params[:id])
+      @enrollment.update(enrollment_params)
+      if @enrollment.valid?
+        redirect_to enrollment_path
+        flash[:message]= "Enrollment Updated!"
+      else
+        render :edit
+      end
     end
 
     def destroy
@@ -71,12 +72,12 @@ class EnrollmentsController < ApplicationController
     end
 
     def set_enrollment
-        @lesson = current_user.enrollments.find_by(id: params[:id])
+       @enrollment = current_user.enrollments.find_by(id: params[:id])
     end
 
     def redirect_if_not_owner
-        if @enrollment.user != current_user
-            redirect_to user_path(current_user)
-            flash[:message]= "You can't edit this enrollment !"
+      if @enrollment.user != current_user
+        redirect_to user_path(current_user)
+        flash[:message]= "You can't edit this enrollment !"
     end
 end
