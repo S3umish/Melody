@@ -1,0 +1,8 @@
+<h3> Select an Instrument: </h3>
+<%= f.collection_select :instrument_id, Instrument.all, :id, :name %>
+
+<h3>Or create a new Instrument: </h3>
+<%= f.fields_for :instrument do |b| %>
+
+<%= render partial: 'instruments/form', locals: {f: f}%>
+<% end %>

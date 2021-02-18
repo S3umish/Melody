@@ -79,19 +79,5 @@ class EnrollmentsController < ApplicationController
         if @enrollment.user != current_user
             redirect_to user_path(current_user)
             flash[:message]= "You can't edit this enrollment !"
-        end
     end
-end
-
-
-
-
-
-
-
-
-
-
-
-
 end

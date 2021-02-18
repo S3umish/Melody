@@ -1,0 +1,49 @@
+<%= form_for(@enrollment) do |f|%>   
+    <% if @enrollment.errors.any? %>
+            <div id="error_explanation">
+                <h4><%= pluralize(@enrollment.errors.count, "error") %> prohibited this article from being saved:<h2>
+                <ul>
+                <% @enrollment.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                    <% end %>
+                </ul>
+            </div>
+    <% end %>
+ 
+    <% if @instrument %>
+        <%= f.hidden_field :instrument_id %>
+    <% else %> 
+        <%= f.collection_select(:instrument_id, Instrument.order(:name), :id, :name, prompt:"Choose An Instrument") %><br>
+            OR 
+        <%= f.fields_for :instrument, @enrollment.build_instrument do |enrollment_instrument| %>
+            <div class="form-group">
+            <%= enrollment_instrument.text_field :name, class: "form-control", placeholder: "Confirm The Instrument"%>
+        </div>     
+    <% end %>
+
+        <div class="form-group">
+        <%= f.label :student %>
+        <%= f.text_field :student, class: "form-control", placeholder:"Student's Full Name" %>
+        </div> 
+      
+        <div class="form-group">
+        <%= f.label :level %>
+        <%= f.select :level,[['choose level'],['Beginner'],['Intermediate'],['Experienced']], class: "form-control", placeholder:"Level" %> 
+
+        <%= f.label :duration %>
+        <%= f.select :duration,[['choose duration'],['16 weeks'],['8 weeks'],['4 weeks']], class: "form-control", placeholder:"Duration" %>
+
+        <%= f.label :price %>
+        <%= f.select :price,[['choose price'],['$39 per week'],['$59 per week'],['$89 per week ']],class: "form-control", placeholder:"Price in USD" %>
+        
+        </div> 
+
+        <div class="form-group">
+        <%= f.label :startdate %>
+        <%= f.date_field :startdate,class: "form-control", placeholder:"Billing Start Date(yyyy/mm/dd)" %>
+        </div>
+        <div class="form-group">
+            <%= f.submit class: "btn btn-warning text-white" %>
+        </div>
+        <% end%>       
+<% end %>  
