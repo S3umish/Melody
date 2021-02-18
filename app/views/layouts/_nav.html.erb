@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success"> 
-<%= link_to 'Melody', root_path, class: "navbar-brand text-light" %>
+<%= link_to 'Music Enrollments', root_path, class: "navbar-brand text-light" %>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
@@ -8,15 +8,20 @@
         <li class="nav-item active">
 
         <% if logged_in? %>
-          <li><%= link_to 'Add New Enrollment', new_enrollment_path, class: "nav-link text-black-50" %></li>
-           <li><%= link_to 'All Instruments', instruments_path, class: "nav-link text-black-50" %></li>         
+           <li><%= link_to 'Add New Enrollment', new_enrollment_path, class: "nav-link text-black-50" %></li>
+           <li><%= link_to 'All Instruments', instruments_path, class: "nav-link text-black-50" %></li>
+           <li><%= link_to 'All Enrollments',enrollments_path,class: "nav-link text-black-50" %></li>        
            <li><%= link_to 'Log Out', logout_path, method: 'delete', class: "nav-link text-black-50" %></li> 
+           
         <% else %>
            <li><%= link_to 'Sign-up', signup_path, class: "nav-link text-black-50" %></li>
            <li><%= link_to 'Log In', login_path, class: "nav-link text-black-50" %></li>
-           <li><%= button_to "Log in with Google",'/auth/google_oauth2'%>  </li>
-        <% end %>    
-        </li>
+       <% end%>
+
+        <% if !logged_in? %>
+           <%= button_to "Log in with Google", "/auth/google_oauth2"%> 
+        <% end %>
+      </li>
     </ul>
   </div>
 </nav>
