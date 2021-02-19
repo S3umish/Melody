@@ -11,7 +11,7 @@ class EnrollmentsController < ApplicationController
     elsif
        @enrollments = Enrollment.all
     else
-      @enrollments = current_user.enrollments
+       @enrollments = current_user.enrollments
     end
   end
 

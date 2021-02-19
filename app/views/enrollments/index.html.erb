@@ -7,10 +7,10 @@
     <thead class="thead-light">
       <tr>
         <th>Instrument Name</th>
-        <th>Student's Name</th>
-        <th>Billing Start Date</th>
+        <th>Student's Name</th> 
         <th>Level</th>
         <th>Created By</th>
+        <th>Billing Start Date-date created</th>
       </tr>
     </thead>
     
@@ -19,9 +19,9 @@
             <tr>
               <td><%=enrollment.instrument.name %>
               <td><%=enrollment.student %></td>
-              <td><%= enrollment.startdate %></td>
               <td><%= enrollment.level%></td>
               <td><%= enrollment.user.username%></td>
+               <td><%= enrollment.startdate %></td>
         <% end %>    
       </tr>
     </tbody>
