@@ -1,17 +1,24 @@
+<br>
+<hr class="my-4">
 <div class="jumbotron bg-light">
-<h2 class="font-weight-lighter"><%= current_user.username %>'s Enrollments</h2>
-    <hr class="my-4">
-    <p class= "lead">
-    <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p>
-    <p><strong> Student's FullName: </strong><%= @enrollment.student %></p>
-    <p><strong> Billing Start Date: </strong><%= @enrollment.startdate %></p>
-    <p><strong> Level: </strong><%= @enrollment.level %></p>
-    <p><strong> Price: </strong><%= @enrollment.price %></p>
-    <p><strong> Duration: </strong><%= @enrollment.duration %></p>
-    <%= link_to 'List Enrollments',enrollments_path(@enrollment),class: "btn btn-warning text-white"%>
-    <%= link_to 'Edit Enrollment', edit_enrollment_path(@enrollment), class: "btn btn-warning text-white" %>
-    <p><%= form_tag(enrollment_path(@enrollment.id), method: :delete) do %></p>
-    <%= submit_tag "Delete Enrollment"%>
-    <% end %>
-     <%#= link_to 'Delete Enrollment',enrollment_path(@enrollment), method: :delete, data: {confirm: 'Confirm'}, class: "btn btn-warning text-white" %>
+  <h1 class="display-4">
+  <h2 class="font-weight-lighter"><h2>Enrollments </h2>
+  <p><%= @instrument.enrollments.map do |enrollment|%></p>
+        <hr class="my-4">
+        <p class= "lead">
+        <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p> %>
+        <p><strong> Student's FullName: </strong><%= @enrollment.student %></p>
+        <p><strong> Billing Start Date: </strong><%= @enrollment.startdate %></p>
+        <p><strong> Level: </strong><%= @enrollment.level %></p>
+        <p><strong> Price: </strong><%= @enrollment.price %></p>
+        <p><strong> Duration: </strong><%= @enrollment.duration %></p>
+        <%= link_to 'List Enrollments',enrollments_path(@enrollment),class: "btn btn-warning text-white"%>
+        
+        <%= link_to 'Edit enrollment', edit_enrollment_path(@enrollment), class: "btn btn-warning text-white" %>
+        <p><%= form_tag(enrollment_path(@enrollment.id), method: :delete) do %></p>
+        <%= submit_tag "Delete Lesson"%>
+      <% end %>
+    <% end %>   
+    
 </div>
+

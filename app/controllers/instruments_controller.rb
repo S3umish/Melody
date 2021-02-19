@@ -1,7 +1,7 @@
 class InstrumentsController < ApplicationController
     def index
-        @instruments = Instrument.all
-    end
+        @instruments = Instrument.all.alphabetize
+     end
           
     def new
         @instrument = Instrument.new
