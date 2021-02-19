@@ -1,18 +1,22 @@
 class EnrollmentsController < ApplicationController
      before_action :set_enrollment
+    #  :redirect_if_not_owner, only: [:show, :edit, :update]
 
   def index
-     # binding.pry
+      # binding.pry
     if params[:instrument_id]
       @instrument = current_user.instruments.find_by(id: params[:instrument_id])
       @enrollments =Instrument.find(params[:instrument_id]).enrollments
       @enrollments = @instrument.enrollments
-      @enrollments = current_user.enrollments
-    else
+    elsif
        @enrollments = Enrollment.all
+    else
+      @enrollments = current_user.enrollments
     end
   end
 
+
+  
   def show
     @enrollment = current_user.enrollments.find_by(id: params[:id])
   end
@@ -30,12 +34,12 @@ class EnrollmentsController < ApplicationController
     # binding.pry
     @enrollment = current_user.enrollments.build(enrollment_params)
       if @enrollment.valid?
-         @enrollment.save
-         redirect_to enrollment_path(@enrollment)
+        @enrollment.save
+        redirect_to enrollment_path(@enrollment)
         flash[:message]= "Success,Enrollment Added."
       else
-      @enrollment = Instrument.find_by_id(params[:instrument_id]) if params[:instrument_id]
-      render :new
+        @enrollment = Instrument.find_by_id(params[:instrument_id]) if params[:instrument_id]
+        render :new
     end
   end
 
@@ -79,10 +83,10 @@ class EnrollmentsController < ApplicationController
   # def redirect_if_not_owner
   #   # binding.pry
   #   if @enrollment.user != current_user
-  #      redirect_to enrollment_path
-  #      flash[:error]= "Not your Enrollment" 
-  #   else
-  #     redirect_to user_path(current_user)   
+  #     redirect_to user_path(current_user)
+  #     flash[:error]= "Not your Enrollment"  
   #   end
   # end
+
+
 end

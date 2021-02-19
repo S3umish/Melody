@@ -2,11 +2,10 @@
 <hr class="my-4">
 <div class="jumbotron bg-light">
   <h1 class="display-4">
-  <h2 class="font-weight-lighter"><h2>Enrollments </h2>
-  <p><%= @instrument.enrollments.map do |enrollment|%></p>
+  <h2 class="font-weight-lighter"><h2><%= current_user.username %>'s Enrollment </h2>
         <hr class="my-4">
         <p class= "lead">
-        <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p> %>
+        <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p>
         <p><strong> Student's FullName: </strong><%= @enrollment.student %></p>
         <p><strong> Billing Start Date: </strong><%= @enrollment.startdate %></p>
         <p><strong> Level: </strong><%= @enrollment.level %></p>
@@ -17,8 +16,6 @@
         <%= link_to 'Edit enrollment', edit_enrollment_path(@enrollment), class: "btn btn-warning text-white" %>
         <p><%= form_tag(enrollment_path(@enrollment.id), method: :delete) do %></p>
         <%= submit_tag "Delete Lesson"%>
-      <% end %>
-    <% end %>   
-    
+      <% end %>     
 </div>
 
