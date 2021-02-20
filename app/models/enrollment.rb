@@ -7,9 +7,17 @@ class Enrollment < ApplicationRecord
 
     validates :price, numericality: {greater_than: 0, message: "$39, $49, $89 only !!"}
     validates :student, presence: true, uniqueness: { case_sensitive: false }
-
+    scope :ordered_by_date, -> { order(created_at: :asc) }
     accepts_nested_attributes_for :instrument, :reject_if=> all_blank, :allow_destroy =>true
     
+
+
+
+
+
+
+
+
     def enrollment_attributes=(enrollment_attributes)
         enrollment = Enrollment.find_or_create_by(enrollment_attributes)
         self.enrollment = enrollment.create_order_desc

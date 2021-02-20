@@ -1,6 +1,6 @@
 class EnrollmentsController < ApplicationController
      before_action :set_enrollment
-    #  :redirect_if_not_owner, only: [:show, :edit, :update]
+      # :redirect_if_not_owner, only: [:show, :edit, :update]
 
   def index
       # binding.pry
@@ -14,7 +14,6 @@ class EnrollmentsController < ApplicationController
        @enrollments = current_user.enrollments
     end
   end
-
 
   
   def show
@@ -62,6 +61,11 @@ class EnrollmentsController < ApplicationController
       render :edit
     end
   end
+
+  def ordered_by_date
+    @enroolment.created_at
+  end
+
 
   def destroy
     @enrollment = current_user.enrollments.find_by(id: params[:id])
