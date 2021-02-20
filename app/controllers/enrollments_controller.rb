@@ -1,6 +1,7 @@
 class EnrollmentsController < ApplicationController
      before_action :set_enrollment
       # :redirect_if_not_owner, only: [:show, :edit, :update]
+      layout "enrollment"
 
   def index
       # binding.pry
@@ -63,7 +64,7 @@ class EnrollmentsController < ApplicationController
   end
 
   def ordered_by_date
-    @enroolment.created_at
+    @enrollment.created_at
   end
 
 

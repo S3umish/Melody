@@ -9,9 +9,6 @@ class Enrollment < ApplicationRecord
     validates :student, presence: true, uniqueness: { case_sensitive: false }
     scope :ordered_by_date, -> { order(created_at: :asc) }
     accepts_nested_attributes_for :instrument, :reject_if=> all_blank, :allow_destroy =>true
-    
-
-
 
 
     def enrollment_attributes=(enrollment_attributes)
@@ -23,10 +20,6 @@ class Enrollment < ApplicationRecord
     def self.find_by_enrollment_id(id)
         binding.pry
         where(enrollment: id)
-    end
-
-    def self.create_order_desc
-        order("created_at DESC")
     end
 
 end

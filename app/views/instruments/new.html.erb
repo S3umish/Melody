@@ -3,7 +3,7 @@
 <h1 class="font-weight-lighter">Create New Instrument:</h1>
 <% if @instrument.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@instrument.errors.count, "error") %> Errors,Can't Save:</h2> 
+    <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this from being saved:</h2> 
 
     <ul>
       <% @instrument.errors.each do |error| %>
