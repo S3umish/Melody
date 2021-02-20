@@ -14,10 +14,6 @@ class Enrollment < ApplicationRecord
 
 
 
-
-
-
-
     def enrollment_attributes=(enrollment_attributes)
         enrollment = Enrollment.find_or_create_by(enrollment_attributes)
         self.enrollment = enrollment.create_order_desc
