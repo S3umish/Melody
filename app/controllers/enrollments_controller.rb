@@ -5,14 +5,13 @@ class EnrollmentsController < ApplicationController
 
   def index
       # binding.pry
-    if params[:instrument_id]
-      @instrument = current_user.instruments.find_by(id: params[:instrument_id])
-      @enrollments =Instrument.find(params[:instrument_id]).enrollments
+    if params[:instrument_id] && @instrument = Instrument.find_by(id: params[:instrument_id])
+      # @enrollments =Instrument.find(params[:instrument_id]).enrollments
       @enrollments = @instrument.enrollments
-    elsif
-       @enrollments = Enrollment.all
     else
-       @enrollments = current_user.enrollments
+      @enrollments = Enrollment.all
+    # else
+    #    @enrollments = current_user.enrollments
     end
   end
 
