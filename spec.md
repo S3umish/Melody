@@ -52,7 +52,8 @@ Enrollment:- scope :ordered_by_date, -> { order(created_at: :asc) }
 Omniauth - Google
 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
-user/1/enrollments
+    http://127.0.0.1:3000/instruments/2/enrollments to see only acoustic guitar shoes
+
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 users/1/enrollments/new
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
