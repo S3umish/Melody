@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Melody Enrollments. Its an enrollment database to keep track of the instruments assigned to a student. 
+Users can also signup and login, with a thrid party authentication system to create and update their records. 
 
-Things you may want to cover:
+Installation Requirement
 
-* Ruby version
+In order to run this application you will need to install the necessary gems and clone this repository and run the following lines in your terminal: $ bundle install $ rails db:migrate
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Startup
+To start using the application, enter the following line in your terminal: $ rails s Once rails is running in your terminal, navigate to the Rails server (localhost:3000) in your browser and enjoy using the application.
