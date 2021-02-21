@@ -4,8 +4,12 @@ class InstrumentsController < ApplicationController
      end
           
     def new
-        @instrument = Instrument.new
-        3.times{@instrument.enrollments.build}
+        if params[:instrument_id] && @instrument = Instrument.find_by_id(params[:instrument_id])
+            @enrollment = @instrument.enrollments.build
+        else
+            @instrument = Instrument.new
+            @instrument.enrollments.build
+        end
     end
 
     def create
