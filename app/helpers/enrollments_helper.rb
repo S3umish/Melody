@@ -1,7 +1,7 @@
 module EnrollmentsHelper
 
      def display_price
-          if @enrollemnt.price > 30 
+          if @enrollment.price > 30 
                content_tag(:h5, "Price: #{number_to_currency(@enrollment.price)}")
           else 
                content_tag(:h2, "Price: #{number_to_currency(@enrollment.price)}")

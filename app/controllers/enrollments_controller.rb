@@ -1,6 +1,5 @@
 class EnrollmentsController < ApplicationController
      before_action :set_enrollment
-      # :redirect_if_not_owner, only: [:show, :edit, :update]
       layout "enrollment"
 
   def index
@@ -17,7 +16,7 @@ class EnrollmentsController < ApplicationController
 
   
   def show
-    @enrollment = current_user.enrollments.find_by(id: params[:id])
+    # @enrollment = current_user.enrollments.find_by(id: params[:id])
   end
 
   def new
@@ -31,7 +30,7 @@ class EnrollmentsController < ApplicationController
 
   def create
     # binding.pry
-    @enrollment = current_user.enrollments.build(enrollment_params)
+     @enrollment = current_user.enrollments.build(enrollment_params)
       if @enrollment.valid?
         @enrollment.save
         redirect_to enrollment_path(@enrollment)
@@ -47,12 +46,12 @@ class EnrollmentsController < ApplicationController
       redirect_to user_path(current_user)
       flash[:error]= "Not your Enrollment" 
     else
-      @enrollment = current_user.enrollments.find_by(id: params[:id])
+      # @enrollment = current_user.enrollments.find_by(id: params[:id])
     end
   end
 
   def update
-    @enrollment = current_user.enrollments.find_by(id: params[:id])
+    # @enrollment = current_user.enrollments.find_by(id: params[:id])
     @enrollment.update(enrollment_params)
     if @enrollment.valid?
       redirect_to enrollment_path
@@ -62,13 +61,13 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  def ordered_by_date
+  def order_by_date
     @enrollment.created_at
   end
 
 
   def destroy
-    @enrollment = current_user.enrollments.find_by(id: params[:id])
+    # @enrollment = current_user.enrollments.find_by(id: params[:id])
     @enrollment.destroy
     redirect_to enrollments_path
     flash[:message]= "Enrollment was successfully deleted"
@@ -83,14 +82,5 @@ class EnrollmentsController < ApplicationController
   def set_enrollment
     @enrollment = current_user.enrollments.find_by(id: params[:id])
   end
-
-  # def redirect_if_not_owner
-  #   # binding.pry
-  #   if @enrollment.user != current_user
-  #     redirect_to user_path(current_user)
-  #     flash[:error]= "Not your Enrollment"  
-  #   end
-  # end
-
 
 end

@@ -32,7 +32,7 @@ class InstrumentsController < ApplicationController
       
     private
     def instrument_params
-        params.require(:instrument).permit(:name, enrollments_attributes: [:student,:start_date, :level, :price, :duration])
+        params.require(:instrument).permit(:name, enrollments_attributes: [:student, :start_date, :level, :price, :duration])
     end   
         
 end

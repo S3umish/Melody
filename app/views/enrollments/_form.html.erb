@@ -15,6 +15,7 @@
     <% else %> 
         <%= f.collection_select(:instrument_id, Instrument.order(:name), :id, :name, prompt:"Choose An Instrument") %><br><br>
             <p>Also , please do confirm below the instrument selected: </p>
+            
          <%= f.fields_for :instrument, @enrollment.build_instrument do |enrollment_instrument| %>
             <div class="form-group">
             <%= enrollment_instrument.text_field :name, class: "form-control", placeholder: "Instrument name"%>

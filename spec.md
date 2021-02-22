@@ -41,8 +41,10 @@ validates :name, presence: true, uniqueness: true
 
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+
 Instrument:- scope :alphabetize, -> { order(name: :asc) }
-Enrollment:- scope :ordered_by_date, -> { order(created_at: :asc) }
+Enrollment:- scope :order_by_date, -> { order(created_at: :asc) }
+
 
 
 - [x] Include signup
@@ -55,13 +57,28 @@ Omniauth - Google
     http://127.0.0.1:3000/instruments/2/enrollments
 
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-http://127.0.0.1:3000/instruments/1/enrollments/new
+    http://127.0.0.1:3000/instruments/1/enrollments/new
 
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 /instruments/new  - Name can't be blank
-/enrollments/new - instrument,student, price, duration can't be blank
+/enrollments/new - instrument, student, price, duration can't be blank
+
+
 Confirm:
 - [ ] The application is pretty DRY
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+
+
+====================================================================
+Count of all Instrument with enrollment(where: instrument_id is true)
+
+Select all records from Enrollment where instrument id is true
+
+e = Instrument.find_by(id: 4)
+values = Enrollment.group(:instrument).count
+Instrument.group(:name).count
+Enrollment.group(:instrument_id).count =>SELECT COUNT(*) AS count_all, "enrollments"."instrument_id" AS enrollments_instrument_id FROM "enrollments" GROUP BY "enrollments"."instrument_id"
+ => {2=>2, 3=>2, 4=>1} 
+

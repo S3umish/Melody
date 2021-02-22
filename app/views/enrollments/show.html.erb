@@ -7,13 +7,13 @@
         <p class= "lead">
         <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p>
         <p><strong> Student's FullName: </strong><%= @enrollment.student %></p>
-        <p><strong> Enrollment Start Date: </strong><%= @enrollment.startdate %></p>
+        <p><strong> Session Start Date: </strong><%= @enrollment.startdate %></p>
         <p><strong> Level: </strong><%= @enrollment.level %></p>
-        <p><strong> Price: </strong><%= @enrollment.price %></p>
+        <p><strong> Price: </strong><%= number_to_currency(@enrollment.price) %></p>
         <p><strong> Duration: </strong><%= @enrollment.duration %></p>
-        <%# <%= link_to 'List Enrollments',enrollments_path(@enrollment),class: "btn btn-warning text-white"%> 
-        <%= link_to "Current User Enrollments", user_path(@current_user) ,class: "btn btn- btn-warning text-white"%> 
-        <%# <%= link_to 'Edit enrollment', edit_enrollment_path(@enrollment), class: "btn btn-warning text-white" %> 
+        
+        <%= link_to "View Your Enrollments", user_path(@current_user) ,class: "btn btn- btn-warning text-white"%> 
+    
         <p><%= form_tag(enrollment_path(@enrollment.id), method: :delete) do %></p>
         <%= submit_tag "Delete Enrollment", data: { confirm: "Are you sure you want to delete the lesson?"}, class: "btn btn-xs btn-danger" %>
       <% end %>     

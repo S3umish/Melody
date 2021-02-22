@@ -26,7 +26,7 @@
             <td><%= enrollment.student %></td>
             <td><%= enrollment.startdate %></td>
             <td><%= enrollment.level %></td>
-            <td><%= enrollment.price %></td>
+            <td><%= number_to_currency(enrollment.price) %></td>
       
           <% if enrollment.user.id == current_user.id %>
           <td><%= link_to "Edit Enrollment", edit_enrollment_path(enrollment.id), method: :edit %>
