@@ -7,10 +7,10 @@
         <p class= "lead">
         <p><strong> Instrument: </strong><%= @enrollment.instrument.name %></p>
         <p><strong> Student's FullName: </strong><%= @enrollment.student %></p>
-        <p><strong> Session Start Date: </strong><%= @enrollment.startdate %></p>
+        <p><strong> Session Start Date: </strong><%= @enrollment.startdate.strftime("%b %d,%Y") %></p>
         <p><strong> Level: </strong><%= @enrollment.level %></p>
         <p><strong> Price: </strong><%= number_to_currency(@enrollment.price) %></p>
-        <p><strong> Duration: </strong><%= @enrollment.duration %></p>
+        <p><strong> Duration: </strong><%= @enrollment.duration %> weeks</p>
         
         <%= link_to "View Your Enrollments", user_path(@current_user) ,class: "btn btn- btn-warning text-white"%> 
     

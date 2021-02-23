@@ -1,4 +1,5 @@
 class EnrollmentsController < ApplicationController
+  
      before_action :set_enrollment
       layout "enrollment"
 

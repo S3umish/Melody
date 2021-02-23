@@ -28,6 +28,18 @@
       <%#= link_to "Logout", logout_path, method: 'delete' %>
       <%#= link_to 'Your Enrollments', user_path(@current_user), class: "btn btn-primary text-white" %>
     </div>
+
+    <% if flash[:message] %>
+      <h3 style="color:green;"><%= flash[:message] %></h3>
+     <% end %>
+
+    <% if flash[:error] %>
+      <h3 style="color:red;"><%= flash[:error] %></h3>
+    <% end %>
+
+    <%if logged_in?%>
+      <h3 style="color:blue;">You are logged in as: <%= current_user.username%></h3>
+    <% end %>
  
     <%= yield %>
   </body>

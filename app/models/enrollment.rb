@@ -20,9 +20,19 @@ class Enrollment < ApplicationRecord
     def self.find_by_instrument_id(id)
         where(instrument: id)
     end
-
-    def display_date
-        self.startdate.strftime("%A, %b %d") if self.startdate
-    end
-
 end
+
+        # def shoes_attributes=(attributes)
+        #     attributes.each do |number, shoe_hash| 
+        #         binding.pry
+        #         shoe = self.shoes.create(shoe_hash)
+        #     end 
+        # end 
+
+        # def shoes_attributes=(attributes)
+        #     attributes.each do |number, shoe_hash| 
+        #         shoe = self.shoes.build(shoe_hash)
+        #         shoe.user = current_user
+        #         shoe.save
+        #     end 
+        # end 

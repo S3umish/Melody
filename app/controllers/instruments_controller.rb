@@ -1,4 +1,6 @@
 class InstrumentsController < ApplicationController
+
+    
     def index
         @instruments = Instrument.all.alphabetize
      end

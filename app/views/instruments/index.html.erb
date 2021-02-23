@@ -11,13 +11,15 @@
                 <thead class="thead-light" <%#= display_header(@instrument)%> >
                         <tr>
                           <th>All Instruments</th>
+                          <th>Number of Enrollments</th>
                         </tr>
                 </thead>
                 <tbody>
                         <% @instruments.all.each do |instrument| %></td>
 
                                 <tr>
-                                <td><%= link_to instrument.name, instrument_enrollments_path(instrument)%></td>                    
+                                <td><%= link_to instrument.name, instrument_enrollments_path(instrument)%></td>  
+                                <td><%= instrument.enrollments.count%> </td>                  
                                 </tr>
                         <% end %>
                 </tbody> 

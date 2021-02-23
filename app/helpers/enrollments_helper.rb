@@ -15,7 +15,6 @@ module EnrollmentsHelper
           else
                tag.h2("All the Enrollments")
           end
-
      end
 
 end
