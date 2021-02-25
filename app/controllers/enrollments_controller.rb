@@ -1,23 +1,20 @@
 class EnrollmentsController < ApplicationController
   
      before_action :set_enrollment
-      layout "enrollment"
+     layout "enrollment"
 
-  def index
-      # binding.pry
+  def index 
     if params[:instrument_id] && @instrument = Instrument.find_by(id: params[:instrument_id])
-      # @enrollments =Instrument.find(params[:instrument_id]).enrollments
+      
       @enrollments = @instrument.enrollments
     else
       @enrollments = Enrollment.all
-    # else
-    #    @enrollments = current_user.enrollments
     end
   end
 
   
   def show
-    # @enrollment = current_user.enrollments.find_by(id: params[:id])
+
   end
 
   def new
@@ -30,7 +27,7 @@ class EnrollmentsController < ApplicationController
   end
 
   def create
-    # binding.pry
+  
      @enrollment = current_user.enrollments.build(enrollment_params)
       if @enrollment.valid?
         @enrollment.save
@@ -47,12 +44,12 @@ class EnrollmentsController < ApplicationController
       redirect_to user_path(current_user)
       flash[:error]= "Not your Enrollment" 
     else
-      # @enrollment = current_user.enrollments.find_by(id: params[:id])
+      
     end
   end
 
   def update
-    # @enrollment = current_user.enrollments.find_by(id: params[:id])
+   
     @enrollment.update(enrollment_params)
     if @enrollment.valid?
       redirect_to enrollment_path
@@ -62,13 +59,8 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  def order_by_date
-    @enrollment.created_at
-  end
-
-
   def destroy
-    # @enrollment = current_user.enrollments.find_by(id: params[:id])
+    
     @enrollment.destroy
     redirect_to enrollments_path
     flash[:message]= "Enrollment was successfully deleted"

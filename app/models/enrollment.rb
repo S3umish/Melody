@@ -12,27 +12,4 @@ class Enrollment < ApplicationRecord
 
     accepts_nested_attributes_for :instrument, :reject_if=> all_blank, :allow_destroy =>true
 
-
-    def instrument_attributes=(instrument_attributes)
-        self.instrument = Instrument.find_or_create_by(name: attr[:name])
-    end
-
-    def self.find_by_instrument_id(id)
-        where(instrument: id)
-    end
 end
-
-        # def shoes_attributes=(attributes)
-        #     attributes.each do |number, shoe_hash| 
-        #         binding.pry
-        #         shoe = self.shoes.create(shoe_hash)
-        #     end 
-        # end 
-
-        # def shoes_attributes=(attributes)
-        #     attributes.each do |number, shoe_hash| 
-        #         shoe = self.shoes.build(shoe_hash)
-        #         shoe.user = current_user
-        #         shoe.save
-        #     end 
-        # end 

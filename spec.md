@@ -40,7 +40,7 @@ Instrument model vaidation is:-
 validates :name, presence: true, uniqueness: true
 
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
 Instrument:- scope :alphabetize, -> { order(name: :asc) }
 Enrollment:- scope :order_by_date, -> { order(created_at: :asc) }
@@ -69,16 +69,4 @@ Confirm:
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
-
-
-====================================================================
-Count of all Instrument with enrollment(where: instrument_id is true)
-
-Select all records from Enrollment where instrument id is true
-
-e = Instrument.find_by(id: 4)
-values = Enrollment.group(:instrument).count
-Instrument.group(:name).count
-Enrollment.group(:instrument_id).count =>SELECT COUNT(*) AS count_all, "enrollments"."instrument_id" AS enrollments_instrument_id FROM "enrollments" GROUP BY "enrollments"."instrument_id"
- => {2=>2, 3=>2, 4=>1} 
 

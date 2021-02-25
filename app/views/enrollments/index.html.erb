@@ -21,7 +21,7 @@
               <td><%= enrollment.student%></td>
               <td><%= enrollment.level%></td>
               <td><%= enrollment.user.username%></td>
-               <td><%= enrollment.created_at %></td>
+               <td><%= enrollment.created_at.strftime("%A, %b %e, at %l:%M %p") %></td>
         <% end %>    
       </tr>
     </tbody>
