@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
+  get '/enrollments/most_expensive', to: 'enrollments#most_expensive', as: 'most_expensive'
+  
   resources :users
 
   resources :enrollments

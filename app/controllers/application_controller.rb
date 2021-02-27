@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     end
 
     def redirect_if_not_logged_in
-        if !logged_in?
-            flash[:error] = "You must be logged in to perform that action"
-            redirect_to '/' if !logged_in?
-        end
+      if !logged_in?
+          flash[:error] = "You must be logged in to perform that action"
+          redirect_to '/' if !logged_in?
+      end
     end
 end   

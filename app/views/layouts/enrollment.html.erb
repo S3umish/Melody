@@ -23,7 +23,7 @@
         <%= render 'layouts/nav' %>
     <div>
       <%#= link_to "Create New Enrollment", new_enrollment_path %>  |
-      <%#= link_to "All Enrollments", enrollments_path %> 
+      <%= link_to "Most Expensive Enrollments", most_expensive_path ,class: "btn btn- btn-secondary text-white"%> 
       <%= link_to "Add New Instrument", new_instrument_path ,class: "btn btn- btn-warning text-white"%> |
       <%#= link_to "Logout", logout_path, method: 'delete' %>
       <%#= link_to 'Your Enrollments', user_path(@current_user), class: "btn btn-primary text-white" %>
