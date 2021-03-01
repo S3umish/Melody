@@ -1,10 +1,11 @@
 # README
 
 Welcome to Melody !! This is a database , where User can assign music instrument and track enrollments with Create, Read, Update and Delete capability.
+
 Users can also signup and login, with a third party authentication system to create and update their records. 
 
 Installation Requirement:
-In order to run this application you will need to install the necessary gems and clone this repository and run the following lines in your terminal: $bundle install,  $rails db:migrate
+In order to run this application you will need to install the necessary gems and fork and clone this repository.Then cd into the directory and run 'bundle install.' Migrate the database with 'rake db:migrate', then start up the server with 'rails s'.
 
 Startup: 
 To start using the application, enter the following line in your terminal: $ rails s .
