@@ -2,6 +2,8 @@
 
 Welcome to Melody !! This is a database , where User can assign music instrument and track enrollments with Create, Read, Update and Delete capability.
 
+Video Demo : https://youtu.be/LSbuCsEdTtU
+
 Users can also signup and login, with a third party authentication system to create and update their records. 
 
 Installation Requirement:
